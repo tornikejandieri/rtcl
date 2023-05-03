@@ -9,6 +9,8 @@ const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.items)
   const dispatch = useDispatch()
 
+  const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0) 
+
   return (
     <div>
       {
@@ -21,6 +23,10 @@ const Cart = () => {
           </div>
         ))
       }
+      <div>
+        <h5>Total</h5>
+        <p>{`$ ${totalPrice}`}</p>
+      </div>
     </div>
   )
 }
