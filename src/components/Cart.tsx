@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Product } from './Products'
-import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import { removeFromCart } from '../models/cart/cartSlice'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 const Cart = () => {
 
-  const cart = useSelector((state: RootState) => state.cart.items)
-  const dispatch = useDispatch()
+  const cart = useAppSelector((state: RootState) => state.cart.items)
+  const dispatch = useAppDispatch()
 
-  const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0) 
+  const totalPrice = useMemo(() => cart.reduce((acc, item) => acc + (item.price * item.quantity), 0), [cart]) 
 
   return (
     <div>

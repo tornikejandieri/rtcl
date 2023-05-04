@@ -2,6 +2,7 @@ import { addToCart } from '../models/cart/cartSlice'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { useAppDispatch } from '../hooks'
 import { products } from '../data'
+import React from 'react'
 
 export interface Product {
   name: string,
